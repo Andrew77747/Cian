@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cian.Framework", "Cian.Framework\Cian.Framework.csproj", "{DEC51D03-9BC0-47F9-A14C-4EF7C7C7DE80}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cian.Tests", "Cian.Tests\Cian.Tests.csproj", "{9226A511-775E-4FC3-832B-5D1706B5E2F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{6B0BE585-72FE-4C61-A21B-D0B504C92458}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{DEC51D03-9BC0-47F9-A14C-4EF7C7C7DE80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEC51D03-9BC0-47F9-A14C-4EF7C7C7DE80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEC51D03-9BC0-47F9-A14C-4EF7C7C7DE80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9226A511-775E-4FC3-832B-5D1706B5E2F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9226A511-775E-4FC3-832B-5D1706B5E2F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9226A511-775E-4FC3-832B-5D1706B5E2F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9226A511-775E-4FC3-832B-5D1706B5E2F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B0BE585-72FE-4C61-A21B-D0B504C92458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B0BE585-72FE-4C61-A21B-D0B504C92458}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B0BE585-72FE-4C61-A21B-D0B504C92458}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B0BE585-72FE-4C61-A21B-D0B504C92458}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

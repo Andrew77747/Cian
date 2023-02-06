@@ -10,3 +10,12 @@ C:\Git\Cian\CianTestSolution\Cian.Framework\obj\Debug\net5.0\Cian.Framework.cspr
 C:\Git\Cian\CianTestSolution\Cian.Framework\obj\Debug\net5.0\Cian.Framework.dll
 C:\Git\Cian\CianTestSolution\Cian.Framework\obj\Debug\net5.0\ref\Cian.Framework.dll
 C:\Git\Cian\CianTestSolution\Cian.Framework\obj\Debug\net5.0\Cian.Framework.pdb
+C:\Git\Cian\CianTestSolution\Cian.Framework\bin\Debug\net5.0\NUnit3.TestAdapter.dll
+C:\Git\Cian\CianTestSolution\Cian.Framework\bin\Debug\net5.0\NUnit3.TestAdapter.pdb
+C:\Git\Cian\CianTestSolution\Cian.Framework\bin\Debug\net5.0\nunit.engine.dll
+C:\Git\Cian\CianTestSolution\Cian.Framework\bin\Debug\net5.0\nunit.engine.api.dll
+C:\Git\Cian\CianTestSolution\Cian.Framework\bin\Debug\net5.0\nunit.engine.core.dll
+C:\Git\Cian\CianTestSolution\Cian.Framework\bin\Debug\net5.0\testcentric.engine.metadata.dll
+C:\Git\Cian\CianTestSolution\Cian.Framework\bin\Debug\net5.0\Infrastructure.dll
+C:\Git\Cian\CianTestSolution\Cian.Framework\bin\Debug\net5.0\Infrastructure.pdb
+C:\Git\Cian\CianTestSolution\Cian.Framework\obj\Debug\net5.0\Cian.Framework.csproj.CopyComplete

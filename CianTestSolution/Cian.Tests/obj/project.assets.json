@@ -885,6 +885,7 @@
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "DotNetSeleniumExtras.WaitHelpers": "3.11.0",
+          "Infrastructure": "1.0.0",
           "Microsoft.Extensions.Configuration": "6.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "6.0.2",
           "NUnit": "3.13.3",

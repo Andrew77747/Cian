@@ -267,6 +267,16 @@
             "rid": "win"
           }
         }
+      },
+      "Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -996,11 +1006,17 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../Infrastructure/Infrastructure.csproj",
+      "msbuildProject": "../Infrastructure/Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "DotNetSeleniumExtras.WaitHelpers >= 3.11.0",
+      "Infrastructure >= 1.0.0",
       "Microsoft.Extensions.Configuration >= 6.0.0",
       "Microsoft.Extensions.Logging.Abstractions >= 6.0.2",
       "NUnit >= 3.13.3",
@@ -1038,7 +1054,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Git\\Cian\\CianTestSolution\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "C:\\Git\\Cian\\CianTestSolution\\Infrastructure\\Infrastructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

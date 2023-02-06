@@ -2,7 +2,6 @@ C:\Git\Cian\CianTestSolution\Infrastructure\bin\Debug\net5.0\Infrastructure.deps
 C:\Git\Cian\CianTestSolution\Infrastructure\bin\Debug\net5.0\Infrastructure.dll
 C:\Git\Cian\CianTestSolution\Infrastructure\bin\Debug\net5.0\ref\Infrastructure.dll
 C:\Git\Cian\CianTestSolution\Infrastructure\bin\Debug\net5.0\Infrastructure.pdb
-C:\Git\Cian\CianTestSolution\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.AssemblyReference.cache
 C:\Git\Cian\CianTestSolution\Infrastructure\obj\Debug\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
 C:\Git\Cian\CianTestSolution\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfoInputs.cache
 C:\Git\Cian\CianTestSolution\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfo.cs

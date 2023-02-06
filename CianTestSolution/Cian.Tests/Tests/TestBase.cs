@@ -1,5 +1,7 @@
 ﻿using System;
+using Cian.Framework.PageObjects.Pages;
 using Cian.Framework.Tools;
+using Infrastructure.Settings;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
@@ -11,25 +13,20 @@ namespace Cian.Tests.Tests
     {
         public WebDriverManager Manager;
         public Appsettings Settings;
-        //public BasePage BasePage;
-        //public TopMenu TopMenu;
-        //public AuthorizationPage AuthorizationPage;
+        public readonly MainPage _MainPage;
 
         public TestBase()
         {
             Manager = new WebDriverManager();
             Settings = new ConfigurationManager().GetSettings();
-            //BasePage = new BasePage(Manager);
-            //TopMenu = new TopMenu(Manager);
-            //AuthorizationPage = new AuthorizationPage(Manager, Settings);
+            _MainPage = new MainPage(Manager, Settings);
         }
 
-        //[SetUp]
-        //public void StartUpTest()
-        //{
-        //    //BasePage.CloseAlert();
-        //    //_authorizationPage.OpenAuthorizationPage();
-        //}
+        [SetUp]
+        public void Start()
+        {
+            _MainPage.OpenMainPage();
+        }
 
         [TearDown]
         public void TeardownTest()
@@ -41,7 +38,6 @@ namespace Cian.Tests.Tests
                 TestContext.AddTestAttachment(screenshot.Path);
             }
 
-            //Manager.Dispose();
             Manager.ClearCookies();
         }
 

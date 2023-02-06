@@ -4,8 +4,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cian.Framework", "Cian.Framework\Cian.Framework.csproj", "{DEC51D03-9BC0-47F9-A14C-4EF7C7C7DE80}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6B0BE585-72FE-4C61-A21B-D0B504C92458} = {6B0BE585-72FE-4C61-A21B-D0B504C92458}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cian.Tests", "Cian.Tests\Cian.Tests.csproj", "{9226A511-775E-4FC3-832B-5D1706B5E2F5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DEC51D03-9BC0-47F9-A14C-4EF7C7C7DE80} = {DEC51D03-9BC0-47F9-A14C-4EF7C7C7DE80}
+		{6B0BE585-72FE-4C61-A21B-D0B504C92458} = {6B0BE585-72FE-4C61-A21B-D0B504C92458}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{6B0BE585-72FE-4C61-A21B-D0B504C92458}"
 EndProject

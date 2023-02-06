@@ -1,0 +1,12 @@
+C:\Git\Cian\CianTestSolution\Cian.Framework\bin\Debug\net5.0\Cian.Framework.deps.json
+C:\Git\Cian\CianTestSolution\Cian.Framework\bin\Debug\net5.0\Cian.Framework.dll
+C:\Git\Cian\CianTestSolution\Cian.Framework\bin\Debug\net5.0\ref\Cian.Framework.dll
+C:\Git\Cian\CianTestSolution\Cian.Framework\bin\Debug\net5.0\Cian.Framework.pdb
+C:\Git\Cian\CianTestSolution\Cian.Framework\obj\Debug\net5.0\Cian.Framework.csproj.AssemblyReference.cache
+C:\Git\Cian\CianTestSolution\Cian.Framework\obj\Debug\net5.0\Cian.Framework.GeneratedMSBuildEditorConfig.editorconfig
+C:\Git\Cian\CianTestSolution\Cian.Framework\obj\Debug\net5.0\Cian.Framework.AssemblyInfoInputs.cache
+C:\Git\Cian\CianTestSolution\Cian.Framework\obj\Debug\net5.0\Cian.Framework.AssemblyInfo.cs
+C:\Git\Cian\CianTestSolution\Cian.Framework\obj\Debug\net5.0\Cian.Framework.csproj.CoreCompileInputs.cache
+C:\Git\Cian\CianTestSolution\Cian.Framework\obj\Debug\net5.0\Cian.Framework.dll
+C:\Git\Cian\CianTestSolution\Cian.Framework\obj\Debug\net5.0\ref\Cian.Framework.dll
+C:\Git\Cian\CianTestSolution\Cian.Framework\obj\Debug\net5.0\Cian.Framework.pdb

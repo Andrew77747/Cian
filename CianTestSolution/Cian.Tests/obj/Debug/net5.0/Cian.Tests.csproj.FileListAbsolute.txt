@@ -1,0 +1,16 @@
+C:\Git\Cian\CianTestSolution\Cian.Tests\bin\Debug\net5.0\Cian.Tests.exe
+C:\Git\Cian\CianTestSolution\Cian.Tests\bin\Debug\net5.0\Cian.Tests.deps.json
+C:\Git\Cian\CianTestSolution\Cian.Tests\bin\Debug\net5.0\Cian.Tests.runtimeconfig.json
+C:\Git\Cian\CianTestSolution\Cian.Tests\bin\Debug\net5.0\Cian.Tests.runtimeconfig.dev.json
+C:\Git\Cian\CianTestSolution\Cian.Tests\bin\Debug\net5.0\Cian.Tests.dll
+C:\Git\Cian\CianTestSolution\Cian.Tests\bin\Debug\net5.0\ref\Cian.Tests.dll
+C:\Git\Cian\CianTestSolution\Cian.Tests\bin\Debug\net5.0\Cian.Tests.pdb
+C:\Git\Cian\CianTestSolution\Cian.Tests\obj\Debug\net5.0\Cian.Tests.csproj.AssemblyReference.cache
+C:\Git\Cian\CianTestSolution\Cian.Tests\obj\Debug\net5.0\Cian.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Git\Cian\CianTestSolution\Cian.Tests\obj\Debug\net5.0\Cian.Tests.AssemblyInfoInputs.cache
+C:\Git\Cian\CianTestSolution\Cian.Tests\obj\Debug\net5.0\Cian.Tests.AssemblyInfo.cs
+C:\Git\Cian\CianTestSolution\Cian.Tests\obj\Debug\net5.0\Cian.Tests.csproj.CoreCompileInputs.cache
+C:\Git\Cian\CianTestSolution\Cian.Tests\obj\Debug\net5.0\Cian.Tests.dll
+C:\Git\Cian\CianTestSolution\Cian.Tests\obj\Debug\net5.0\ref\Cian.Tests.dll
+C:\Git\Cian\CianTestSolution\Cian.Tests\obj\Debug\net5.0\Cian.Tests.pdb
+C:\Git\Cian\CianTestSolution\Cian.Tests\obj\Debug\net5.0\Cian.Tests.genruntimeconfig.cache

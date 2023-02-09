@@ -1,4 +1,5 @@
 ﻿using Cian.Framework.Tools;
+using OpenQA.Selenium;
 
 namespace Cian.Framework.PageObjects.Elements
 {
@@ -9,6 +10,11 @@ namespace Cian.Framework.PageObjects.Elements
         public BaseElement(IWebDriverManager manager)
         {
             Wrapper = new SeleniumWrapper(manager.GetDriver(), manager.GetWaiter());
+        }
+
+        public bool IsElementActive(IWebElement selector)
+        {
+            return Wrapper.IsAttributeContainsValue(selector, "class", "active");
         }
     }
 }

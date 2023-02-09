@@ -9,3 +9,4 @@ C:\Git\Cian\CianTestSolution\Infrastructure\obj\Debug\net5.0\Infrastructure.cspr
 C:\Git\Cian\CianTestSolution\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
 C:\Git\Cian\CianTestSolution\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
 C:\Git\Cian\CianTestSolution\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
+C:\Git\Cian\CianTestSolution\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.AssemblyReference.cache

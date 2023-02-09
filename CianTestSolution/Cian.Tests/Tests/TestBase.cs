@@ -13,19 +13,19 @@ namespace Cian.Tests.Tests
     {
         public WebDriverManager Manager;
         public Appsettings Settings;
-        public readonly MainPage _MainPage;
+        private readonly MainPage _mainPage;
 
         public TestBase()
         {
             Manager = new WebDriverManager();
             Settings = new ConfigurationManager().GetSettings();
-            _MainPage = new MainPage(Manager, Settings);
+            _mainPage = new MainPage(Manager, Settings);
         }
 
         [SetUp]
         public void Start()
         {
-            _MainPage.OpenMainPage();
+            _mainPage.OpenMainPage();
         }
 
         [TearDown]

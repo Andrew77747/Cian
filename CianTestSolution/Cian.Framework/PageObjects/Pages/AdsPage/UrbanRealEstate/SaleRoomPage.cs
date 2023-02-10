@@ -1,11 +1,11 @@
 ﻿using Cian.Framework.Tools;
 using OpenQA.Selenium;
 
-namespace Cian.Framework.PageObjects.Pages.AdsPage
+namespace Cian.Framework.PageObjects.Pages.AdsPage.UrbanRealEstate
 {
-    public class OwnerSaleLivingApartmentAdPage : AdPage
+    public class SaleRoomPage : UrbanRealEstatePage
     {
-        public OwnerSaleLivingApartmentAdPage(WebDriverManager manager) : base(manager)
+        public SaleRoomPage(WebDriverManager manager) : base(manager)
         {
 
         }
@@ -23,20 +23,20 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage
         private readonly By _kitchenArea = By.CssSelector("[name='kitchenArea']");
 
         #endregion
-
+        //TODO этот метод можно удалить
         public void SetSaleApartmentForm(string cadastralNumber, string housingType, string countNumber,
             string totalArea, string floor, string floorCount, string roomArea, string livingArea,
             string kitchenArea, string loggiasCount, string combinedWcsCount, string repairType, string hasPhone,
             params string[] checkBoxesNames)
         {
-            Wrapper.TypeAndSend(_cadastralNumberInput, cadastralNumber);
+            //Wrapper.TypeAndSend(CadastralNumberInput, cadastralNumber);
 
             Wrapper.FindElement(By.XPath($"//*[@name='housingType']/*[text()='{housingType}']")).Click();
 
-            Wrapper.ClickElement(_roomsCountDropdown);
-            Wrapper.FindElement(By.XPath($"//*[@class='cui-dropdown__menu']/*[text()='{countNumber}']")).Click();
+            //Wrapper.ClickElement(RoomsCountDropdown);
+            //Wrapper.FindElement(By.XPath($"//*[name='roomsForCount']/*[text()='{countNumber}']")).Click();
 
-            var checkBoxes = Wrapper.FindElements(_checkBox);
+            var checkBoxes = Wrapper.FindElements(CheckBox);
             foreach (var checkBox in checkBoxes)
             {
                 if (Wrapper.IsAttributeContainsValue(checkBox, "class", "cui-checkbox_checked"))
@@ -67,25 +67,25 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage
                 }
             }
 
-            Wrapper.TypeAndSend(_totalAreaApartment, totalArea);
+            Wrapper.TypeAndSend(TotalAreaApartment, totalArea);
 
-            Wrapper.TypeAndSend(_floor, floor);
+            //Wrapper.TypeAndSend(Floor, floor);
 
-            Wrapper.TypeAndSend(_floorCount, floorCount);
+            //Wrapper.TypeAndSend(FloorCount, floorCount);
 
-            Wrapper.TypeAndSend(_roomArea, roomArea);
+            //Wrapper.TypeAndSend(RoomArea, roomArea);
 
-            Wrapper.TypeAndSend(_livingArea, livingArea);
+            //Wrapper.TypeAndSend(LivingArea, livingArea);
 
-            Wrapper.TypeAndSend(_kitchenArea, kitchenArea);
+            //Wrapper.TypeAndSend(KitchenArea, kitchenArea);
 
-            Wrapper.FindElement(By.XPath($"//*[@name='loggiasCount']/*[text()='{loggiasCount}']")).Click();
+            //Wrapper.FindElement(By.XPath($"//*[@name='loggiasCount']/*[text()='{loggiasCount}']")).Click();
 
-            Wrapper.FindElement(By.XPath($"//*[@name='combinedWcsCount']/*[text()='{combinedWcsCount}']")).Click();
+            //Wrapper.FindElement(By.XPath($"//*[@name='combinedWcsCount']/*[text()='{combinedWcsCount}']")).Click();
 
-            Wrapper.FindElement(By.XPath($"//*[@name='repairType']/*[text()='{repairType}']")).Click();
+            //Wrapper.FindElement(By.XPath($"//*[@name='repairType']/*[text()='{repairType}']")).Click();
 
-            Wrapper.FindElement(By.XPath($"//*[@name='hasPhone']/*[text()='{hasPhone}']")).Click();
+            //Wrapper.FindElement(By.XPath($"//*[@name='hasPhone']/*[text()='{hasPhone}']")).Click();
         }
     }
 }

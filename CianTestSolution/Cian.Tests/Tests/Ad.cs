@@ -4,6 +4,7 @@ using Cian.Framework.Data.Models;
 using Cian.Framework.PageObjects.Elements;
 using Cian.Framework.PageObjects.Pages;
 using Cian.Framework.PageObjects.Pages.AdsPage;
+using Cian.Framework.PageObjects.Pages.AdsPage.UrbanRealEstate;
 using NUnit.Framework;
 
 namespace Cian.Tests.Tests
@@ -12,13 +13,13 @@ namespace Cian.Tests.Tests
     {
         private readonly Header _header;
         private readonly AdPage _adPage;
-        private readonly OwnerSaleLivingApartmentAdPage _ownerSaleLivingApartmentAdPage;
+        private readonly SaleRoomPage _saleRoomPage;
 
         public Ad()
         {
             _header = new Header(Manager);
             _adPage = new AdPage(Manager);
-            _ownerSaleLivingApartmentAdPage = new OwnerSaleLivingApartmentAdPage(Manager);
+            _saleRoomPage = new SaleRoomPage(Manager);
         }
 
         [Test, TestCaseSource(typeof(DataProviders), "OwnerSaleLivingApartmentAdData")]
@@ -27,7 +28,7 @@ namespace Cian.Tests.Tests
         {
             _header.ClickPostAdBtn();
             _adPage.SaleAd(AccountType.Owner, RealEstateType.Living, LivingObjectType.Apartment);
-            _ownerSaleLivingApartmentAdPage.EnterAddress(data.Address);
+            _saleRoomPage.EnterAddress(data.Address);
 
             Thread.Sleep(2000);
         }

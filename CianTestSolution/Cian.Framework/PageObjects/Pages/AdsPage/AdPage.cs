@@ -30,7 +30,8 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage
             Wrapper.ClickElement(_clearFormBtn);
         }
 
-        public void SetAnnouncementType(string accountType, string dealType, string realEstateType, string objectType)
+        public void SetAdMainBlock(string accountType, string dealType, string realEstateType, 
+            string objectType, string rentType = null)
         {
             Wrapper.FindElement(By.XPath($"//*[@items='adTypeCtrl.accountTypes']/*[text()='{accountType}']")).Click();
             Wrapper.FindElement(By.XPath($"//*[@data-mark-model-name='adType.dealType']/*[text()='{dealType}']")).Click();
@@ -38,7 +39,15 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage
             switch (dealType)
             {
                 case "Аренда":
+                    Wrapper.FindElement(By.XPath($"//*[@data-mark-model-name='adType.rentDuration']/*[text()='{rentType}']")).Click();
+                    Wrapper.FindElement(By.XPath(
+                        $"//*[@data-mark-model-name='adType.propertyType']/*[text()='{realEstateType}']")).Click();
 
+                    if (rentType == "Посуточно")
+                        Wrapper.FindElement(By.XPath(
+                            $"//*[@data-mark-model-name='adType.objectType']/*[text()='{objectType}']")).Click();
+                    else
+                        Wrapper.FindElement(By.XPath($"//*[@ng-bind='objectType.name' and text() ='{objectType}']")).Click();
                     break;
 
                 case "Продажа":

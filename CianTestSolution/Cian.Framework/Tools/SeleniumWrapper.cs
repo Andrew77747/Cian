@@ -219,6 +219,13 @@ namespace Cian.Framework.Tools
         public void SwitchToDefaultFrame()
         {
             _driver.SwitchTo().DefaultContent();
+            //_driver.SwitchTo().ParentFrame();
+        }
+
+        //Открыть новую вкладку
+        public void OpenNewTabOrWindow(WindowType type)
+        {
+            _driver.SwitchTo().NewWindow(type);
         }
 
         //Переключиться на Alert

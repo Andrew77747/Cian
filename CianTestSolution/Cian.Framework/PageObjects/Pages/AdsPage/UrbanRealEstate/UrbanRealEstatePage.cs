@@ -1,4 +1,7 @@
-﻿using Cian.Framework.Tools;
+﻿using System.Collections.Generic;
+using System.Threading;
+using Cian.Framework.Tools;
+using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace Cian.Framework.PageObjects.Pages.AdsPage.UrbanRealEstate
@@ -7,15 +10,15 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage.UrbanRealEstate
     {
         public UrbanRealEstatePage(WebDriverManager manager) : base(manager)
         {
-            
+
         }
 
         #region Map of Elements
         //TODO Разобраться с селекторами. Сделать их private или protected
         private protected readonly By CadastralNumberInput = By.CssSelector("[name='cadastralNumber']");
-        protected readonly By RoomsForSale = By.CssSelector("[name='roomsForCount']");
+        protected readonly By RoomsCount = By.CssSelector("[name='roomsForCount']");
         protected readonly By CheckBox = By.CssSelector(".cui-checkbox.cui-checkbox_inline");
-        protected readonly By TotalAreaApartment = By.CssSelector("[name='urbanTotalArea']");
+        protected readonly By UrbanTotalArea = By.CssSelector("[name='urbanTotalArea']");
         protected readonly By Floor = By.CssSelector("[name='floorNumber']");
         protected readonly By FloorCount = By.CssSelector("[name='floorsCount']");
         protected readonly By RoomArea = By.CssSelector("[name='allRoomsArea']");
@@ -26,8 +29,10 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage.UrbanRealEstate
         protected readonly By _roomArea = By.CssSelector("[name='roomArea']");
         protected readonly By _allRoomArea = By.CssSelector("[name='allRoomsArea']");
         protected readonly By _roomsCount = By.CssSelector("[name='roomsCount']");
+        protected readonly By _roomsForRentTotalCount = By.CssSelector("[name='roomsForRentTotalCount']");
+        protected readonly By _houseSeries = By.CssSelector("[name='building.series']");
 
-        protected readonly By _materialClassAndSeriesDropdown = By.CssSelector(".material-type-and-series");
+        protected readonly By _typeHouseDropdown = By.XPath("//*[@name='building.materialType']");
         protected readonly By _buildingNameInput = By.CssSelector("[name='building.name']");
         protected readonly By _buildYearInput = By.CssSelector("[name='building.buildYear']");
         protected readonly By _ceilingHeightInput = By.CssSelector("[name='building.ceilingHeight']");
@@ -35,58 +40,65 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage.UrbanRealEstate
         protected readonly By _moreAboutBuildingParameters = By.XPath("//*[@id='about-building']//*[text()='Больше параметров']");
 
         protected readonly By _moreRentParameters = By.XPath("//*[@class='cian-af-expander__toggle']//*[text()='Больше параметров']");
-        protected readonly By additionalCheckbox = By.XPath(".additional-simple-form .cui-checkbox");
+        protected readonly By additionalCheckbox = By.CssSelector(".additional-simple-form .cui-checkbox");
 
 
 
         #endregion
 
-        public void SetAboutLivingBuildingForm(string houseType, string passengerLiftsCount, string cargoLiftsCount, 
-            string buildingName, string buildYear, string ceilingHigh, string hasRamp, string checkboxValue, string parkingType)
+        public void SetAboutLivingBuildingForm(string buildingName, string buildYear, string houseType, string houseSeries,
+            string ceilingHigh, string passengerLiftsCount, string cargoLiftsCount, string hasRamp, 
+            string garbageChuteCheckbox, string parkingType)
         {
-            Wrapper.ClickElement(_materialClassAndSeriesDropdown);
-            Wrapper.FindElement(By.XPath($"//*[@class='material-type-and-series']//li[text()='{houseType}']")).Click();
-
-            Wrapper.FindElement(By.XPath($"//*[@name='building.passengerLiftsCount']/*[text()='{passengerLiftsCount}']")).Click();
-
-            Wrapper.FindElement(By.XPath($"//*[@name='building.cargoLiftsCount']/*[text()='{cargoLiftsCount}']")).Click();
-
-            if(Wrapper.IsElementDisplayed(_moreAboutBuildingParameters))
-                Wrapper.ClickElement(_moreAboutBuildingParameters);
-
             Wrapper.TypeAndSend(_buildingNameInput, buildingName);
 
             Wrapper.TypeAndSend(_buildYearInput, buildYear);
 
+            var typeHouseDropdown = Wrapper.FindElement(_typeHouseDropdown);
+            typeHouseDropdown.Click();
+            typeHouseDropdown.FindElement(By.XPath($"//li[text()='{houseType}']")).Click();
+
+            Wrapper.TypeAndSend(_houseSeries, houseSeries);
+
+            if (Wrapper.IsElementDisplayed(_moreAboutBuildingParameters))
+                Wrapper.ClickElement(_moreAboutBuildingParameters);
+
             Wrapper.TypeAndSend(_ceilingHeightInput, ceilingHigh);
+
+            var tabElement = Wrapper.FindElement(By.XPath(
+                $"//*[@name='building.passengerLiftsCount']/*[text()='{passengerLiftsCount}']"));
+            if (Wrapper.IsAttributeNotContainsValue(tabElement, "class", "active"))
+            {
+                tabElement.Click();
+            }
+
+            tabElement = Wrapper.FindElement(By.XPath($"//*[@name='building.cargoLiftsCount']/*[text()='{cargoLiftsCount}']"));
+            if (Wrapper.IsAttributeNotContainsValue(tabElement, "class", "active"))
+            {
+                tabElement.Click();
+            }
 
             Wrapper.FindElement(By.XPath($"//*[@name='hasRamp']/*[text()='{hasRamp}']")).Click();
 
-            if(Wrapper.IsAttributeContainsValue(_garbageChuteCheckbox, "class", "checked"))
+            if (Wrapper.IsAttributeContainsValue(_garbageChuteCheckbox, "class", "checked"))
                 Wrapper.ClickElement(_garbageChuteCheckbox);
-            switch (checkboxValue)
+            switch (garbageChuteCheckbox)
             {
-                case "Yes":
+                case "Есть":
                     Wrapper.ClickElement(_garbageChuteCheckbox);
                     break;
-                case "No":
+                case "Нет":
                     break;
             }
 
-            Wrapper.FindElement(By.XPath($"//*[@name='building.parking.type']/*[text()='{parkingType}']")).Click();
+            tabElement = Wrapper.FindElement(By.XPath($"//*[@name='building.parking.type']/*[text()='{parkingType}']"));
+            if (Wrapper.IsAttributeNotContainsValue(tabElement, "class", "active"))
+            {
+                tabElement.Click();
+            }
         }
 
-        public void PetsAllowed(string petsAllowed)
-        {
-            Wrapper.FindElement(By.XPath($"//*[@data-mark-model-name='ad.petsAllowed']/*[text()='{petsAllowed}']")).Click();
-        }
-
-        public void ChildrenAllowed(string childrenAllowed)
-        {
-            Wrapper.FindElement(By.XPath($"//*[@data-mark-model-name='ad.childrenAllowed']/*[text()='{childrenAllowed}']")).Click();
-        }
-
-        public void SetRentBlock(string[] additionally, string petsAllowed = null, string childrenAllowed = null)
+        public void SetAdvancedBlock(List<string> additionally)
         {
             Wrapper.ClickElement(_moreRentParameters);
 
@@ -94,7 +106,7 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage.UrbanRealEstate
 
             foreach (var checkbox in additionalCheckboxes)
             {
-                if(Wrapper.IsAttributeContainsValue(checkbox, "class", "checked"))
+                if (Wrapper.IsAttributeContainsValue(checkbox, "class", "checked"))
                     checkbox.Click();
             }
 
@@ -111,11 +123,12 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage.UrbanRealEstate
             Wrapper.TypeAndSend(CadastralNumberInput, cadastralNumber);
         }
 
-        public void SetRoomsForSaleCount(string roomsForSale)
+        public void SetRoomsForRentCount(string roomsForSale)
         {
-            var roomsForSaleDropdown = Wrapper.FindElement(RoomsForSale);
+            var roomsForSaleDropdown = Wrapper.FindElement(RoomsCount);
             roomsForSaleDropdown.Click();
-            roomsForSaleDropdown.FindElement(By.XPath($"//*[name='RoomsForSale']/*[text()='{roomsForSale}']")).Click();
+            roomsForSaleDropdown.FindElement(By.XPath($"//*[contains(@data-mark, 'roomsForSaleCount')]" +
+                                                      $"/*[text()='{roomsForSale}']")).Click();
         }
 
         public void SetRoomsType(string roomsType)
@@ -138,6 +151,11 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage.UrbanRealEstate
             Wrapper.TypeAndSend(_roomArea, roomArea);
         }
 
+        public void SetTotalArea(string totalArea)
+        {
+            Wrapper.TypeAndSend(UrbanTotalArea, totalArea);
+        }
+
         public void SetAllRoomArea(string allRoomsArea)
         {
             Wrapper.TypeAndSend(_allRoomArea, allRoomsArea);
@@ -150,9 +168,9 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage.UrbanRealEstate
             Wrapper.TypeAndSend(FloorCount, floorCount);
         }
 
-        public void SetRoomsCount(string roomsCount)
+        public void SetRoomsTotalCount(string roomsCount)
         {
-            var roomsCountDropdown = Wrapper.FindElement(_roomsCount);
+            var roomsCountDropdown = Wrapper.FindElement(_roomsForRentTotalCount);
             roomsCountDropdown.Click();
             roomsCountDropdown.FindElement(By.XPath($"//*[text()='{roomsCount}']")).Click();
         }
@@ -169,32 +187,69 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage.UrbanRealEstate
 
         public void SetLoggiasCount(string loggiasCount)
         {
-            Wrapper.FindElement(By.XPath($"//*[@name='loggiasCount']/*[text()='{loggiasCount}']")).Click();
+            var tabElement = Wrapper.FindElement(By.XPath($"//*[@name='loggiasCount']/*[text()='{loggiasCount}']"));
+            if (Wrapper.IsAttributeNotContainsValue(tabElement, "class", "active"))
+            {
+                tabElement.Click();
+            }
         }
 
         public void SetBalconiesCount(string balconiesCount)
         {
-            Wrapper.FindElement(By.XPath($"//*[@name='balconiesCount']/*[text()='{balconiesCount}']")).Click();
+            var tabElement = Wrapper.FindElement(By.XPath($"//*[@name='balconiesCount']/*[text()='{balconiesCount}']"));
+            if (Wrapper.IsAttributeNotContainsValue(tabElement, "class", "active"))
+            {
+                tabElement.Click();
+            }
         }
 
         public void SetSeparateWcsCount(string separateWcsCount)
         {
-            Wrapper.FindElement(By.XPath($"//*[@name='separateWcsCount']/*[text()='{separateWcsCount}']")).Click();
+            var tabElement = Wrapper.FindElement(By.XPath($"//*[@name='separateWcsCount']/*[text()='{separateWcsCount}']"));
+            if (Wrapper.IsAttributeNotContainsValue(tabElement, "class", "active"))
+            {
+                tabElement.Click();
+            }
         }
 
         public void SetCombinedWcsCount(string combinedWcsCount)
         {
-            Wrapper.FindElement(By.XPath($"//*[@name='combinedWcsCount']/*[text()='{combinedWcsCount}']")).Click();
+            var tabElement = Wrapper.FindElement(By.XPath($"//*[@name='combinedWcsCount']/*[text()='{combinedWcsCount}']"));
+            if (Wrapper.IsAttributeNotContainsValue(tabElement, "class", "active"))
+            {
+                tabElement.Click();
+            }
         }
 
         public void SetRepairType(string repairType)
         {
-            Wrapper.FindElement(By.XPath($"//*[@name='repairType']/*[text()='{repairType}']")).Click();
+            var tabElement = Wrapper.FindElement(By.XPath($"//*[@name='repairType']/*[text()='{repairType}']"));
+            if (Wrapper.IsAttributeNotContainsValue(tabElement, "class", "active"))
+            {
+                tabElement.Click();
+            }
         }
 
         public void SetHasPhone(string hasPhone)
         {
             Wrapper.FindElement(By.XPath($"//*[@name='hasPhone']/*[text()='{hasPhone}']")).Click();
+        }
+
+        public void SetPetsAllowed(string petsAllowed)
+        {
+            var tabElement = Wrapper.FindElement(By.XPath($"//*[@name='petsAllowed']/*[text()='{petsAllowed}']"));
+            if (Wrapper.IsAttributeNotContainsValue(tabElement, "class", "active"))
+            {
+                tabElement.Click();
+            }
+        }
+        public void SetChildrenAllowed(string childrenAllowed)
+        {
+            var tabElement = Wrapper.FindElement(By.XPath($"//*[@name='childrenAllowed']/*[text()='{childrenAllowed}']"));
+            if (Wrapper.IsAttributeNotContainsValue(tabElement, "class", "active"))
+            {
+                tabElement.Click();
+            }
         }
     }
 }

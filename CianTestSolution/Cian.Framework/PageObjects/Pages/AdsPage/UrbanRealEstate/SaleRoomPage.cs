@@ -67,7 +67,7 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage.UrbanRealEstate
                 }
             }
 
-            Wrapper.TypeAndSend(TotalAreaApartment, totalArea);
+            Wrapper.TypeAndSend(UrbanTotalArea, totalArea);
 
             //Wrapper.TypeAndSend(Floor, floor);
 

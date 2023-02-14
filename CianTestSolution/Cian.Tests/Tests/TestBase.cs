@@ -26,6 +26,7 @@ namespace Cian.Tests.Tests
         public void Start()
         {
             _mainPage.OpenMainPage();
+            _mainPage.CloseCookies();
         }
 
         [TearDown]

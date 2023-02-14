@@ -22,12 +22,22 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage
         private readonly By _addVideoBtn = By.CssSelector(".video__button");
         private readonly By _adTitle = By.CssSelector("[name='title']");
         private readonly By _adDescription = By.CssSelector("[wrap='soft']");
+        private readonly By _shortFormSwitcher = By.CssSelector(".short-form-switcher");
+        private readonly By _fullFormSwitcher = By.CssSelector(".short-form-switcher__full-form");
 
         #endregion
 
         public void ClickClearFormBtn()
         {
             Wrapper.ClickElement(_clearFormBtn);
+        }
+
+        public void SwitchFormIfExists()
+        {
+            if (Wrapper.IsElementDisplayed(_shortFormSwitcher))
+            {
+                Wrapper.FindElement(_fullFormSwitcher).Click();
+            }
         }
 
         public void SetAdMainBlock(string accountType, string dealType, string realEstateType, 
@@ -104,16 +114,24 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage
             }
         }
 
-        public void SetDescriptionBlock(string youTubeLink, string adTitle, string adDescription)
+        public void SetDescriptionBlock(string description, string youTubeLink = null, string title = null)
         {
             //Добавить загрузку фоток
+            if (youTubeLink != null)
+            {
+                Wrapper.TypeAndSend(_youTubeInput, youTubeLink);
+                Wrapper.ClickElement(_addVideoBtn);
+            }
+            
+            if(title != null)
+                Wrapper.ClearTypeAndSend(_adTitle, title);
 
-            Wrapper.TypeAndSend(_youTubeInput, youTubeLink);
-            Wrapper.ClickElement(_addVideoBtn);
+            Wrapper.TypeAndSend(_adDescription, description);
+        }
 
-            Wrapper.ClearTypeAndSend(_adTitle, adTitle);
+        public void SetPriceAndDealConditions()
+        {
 
-            Wrapper.TypeAndSend(_adDescription, adDescription);
         }
     }
 }

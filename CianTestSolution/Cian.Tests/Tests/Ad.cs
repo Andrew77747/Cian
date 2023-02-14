@@ -14,21 +14,46 @@ namespace Cian.Tests.Tests
         private readonly Header _header;
         private readonly AdPage _adPage;
         private readonly SaleRoomPage _saleRoomPage;
+        private readonly RentRoomPage _rentRoomPage;
+        private readonly LoginModal _loginModal;
 
         public Ad()
         {
             _header = new Header(Manager);
             _adPage = new AdPage(Manager);
             _saleRoomPage = new SaleRoomPage(Manager);
+            _rentRoomPage = new RentRoomPage(Manager);
+            _loginModal = new LoginModal(Manager, Settings);
         }
 
-        [Test, TestCaseSource(typeof(DataProviders), "OwnerSaleLivingApartmentAdData")]
-        [Description("Проверить, что объявление о продажи квартиры собственником создается")]
-        public void CheckSaleAdOwnerApartmentAnnouncement(OwnerSaleLivingApartmentAd data)
+        [SetUp]
+        public void StartUp()
         {
+            _header.ClickLoginBtn();
+            _loginModal.Login();
+        }
+
+        [Test]
+        [Description("Проверить, что объявление об аренде комнаты собственником создается")]
+        public void CheckRentAdOwnerRoomAd(
+            [ValueSource(typeof(DataProviders), "OwnerRentRoomAdData")] AboutLivingObject objectData,
+            [ValueSource(typeof(DataProviders), "AboutBuildingData")] AboutLivingBuilding buildingData)
+        {
+            Thread.Sleep(2000);
             _header.ClickPostAdBtn();
-            _adPage.SaleAd(AccountType.Owner, RealEstateType.Living, LivingObjectType.Apartment);
-            _saleRoomPage.EnterAddress(data.Address);
+            _rentRoomPage.RentAd(AccountType.Owner, RentType.Long, RealEstateType.Living, LivingObjectType.Room);
+            _rentRoomPage.EnterAddress(objectData.Address);
+            Thread.Sleep(1000);
+            _rentRoomPage.SetAboutObjectBlock(objectData.CadastralNumber, objectData.RoomsForRentCount, objectData.RoomsType,
+                objectData.RoomArea, objectData.TotalArea, objectData.Floor, objectData.FloorCount, 
+                objectData.TotalRoomCountInFlat, objectData.Kitchen, objectData.LoggiasCount, objectData.BalconiesCount,
+                objectData.SeparatedWsCount, objectData.CombinedWsCount, objectData.Repair, objectData.Pets, 
+                objectData.Children, objectData.AdvancedOptions);
+            _rentRoomPage.SetAboutLivingBuildingForm(buildingData.Name, buildingData.BuildYear, buildingData.HouseType,
+                buildingData.HouseSeries, buildingData.CeilingHeight, buildingData.PassengerElevator,
+                buildingData.CargoElevator, buildingData.Ramp, buildingData.GarbageChute, buildingData.Parking);
+
+            _rentRoomPage.SetDescriptionBlock(description: objectData.Description);
 
             Thread.Sleep(2000);
         }

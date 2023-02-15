@@ -47,6 +47,8 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage
 
         public void SwitchFormIfExists()
         {
+            Wrapper.WaitElementDisplayed(_shortFormSwitcher);
+
             if (Wrapper.IsElementDisplayed(_shortFormSwitcher))
             {
                 Wrapper.FindElement(_fullFormSwitcher).Click();

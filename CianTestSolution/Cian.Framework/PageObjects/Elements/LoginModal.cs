@@ -22,6 +22,7 @@ namespace Cian.Framework.PageObjects.Elements
         private readonly By _passwordInput = By.CssSelector("[name='password']");
         private readonly By _loginBtn = By.CssSelector("[data-name='ContinueAuthBtn']");
         private readonly By _helpLink = By.CssSelector("._25d45facb5--link-content--jk8CC");
+        private readonly By _loginModal = By.CssSelector("._25d45facb5--window--nAL7V._25d45facb5--window--jN5vA");
 
         #endregion
 
@@ -33,6 +34,7 @@ namespace Cian.Framework.PageObjects.Elements
             Wrapper.ClickElement(_continueBtn);
             Wrapper.TypeAndSend(_passwordInput, _settings.Password);
             Wrapper.ClickElement(_loginBtn);
+            Wrapper.WaitForElementNotDisplayed(_loginModal);
         }
 
         public void ClickHelpLink()

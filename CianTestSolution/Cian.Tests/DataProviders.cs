@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Cian.Framework.Data.Announcement;
 using Cian.Framework.Data.Models;
 
 namespace Cian.Tests
@@ -10,7 +11,7 @@ namespace Cian.Tests
         {
             get
             {
-                yield return new AboutLivingObject()
+                yield return new UrbanRealEstateAdModel()
                 {
                     Address = "проспект Просвещения, 14к4, Санкт-Петербург",
                     CadastralNumber = "47:14:1203001:814",
@@ -41,18 +42,6 @@ namespace Cian.Tests
                     AdvancedOptions.WindowsToStreet,
                     AdvancedOptions.Loggia
                     },
-                    Description = "Сдается отличная комната"
-                };
-                //Email = "adam" + (long)(DateTime.Now - DateTime.MinValue).TotalMilliseconds + "@smith.me",
-            }
-        }
-
-        public static IEnumerable AboutBuildingData
-        {
-            get
-            {
-                yield return new AboutLivingBuilding()
-                {
                     Name = "Алые паруса",
                     BuildYear = "2020",
                     HouseType = "Кирпичный",
@@ -62,8 +51,83 @@ namespace Cian.Tests
                     CargoElevator = "нет",
                     Ramp = "Нет",
                     GarbageChute = "Есть",
-                    Parking = "Наземная"
+                    Parking = "Наземная",
+                    Description = "Сдается отличная комната",
+                    RentPrice = "20000",
+                    CurrencyType = "₽",
+                    BargainCheckbox = "Yes",
+                    CommunalPaymentAmount = "2000",
+                    CounterCheckbox = "Yes",
+                    BargainPrice = "18000",
+                    BargainConditions = "Порядочной семье торг",
+                    Prepayment = "1 месяц",
+                    SelfEmployed = "Не указывать",
+                    OwnerDeposit = "20000",
+                    TenantsType = "семья"
                 };
+                //Email = "adam" + (long)(DateTime.Now - DateTime.MinValue).TotalMilliseconds + "@smith.me",
+            }
+        }
+
+        public static IEnumerable OwnerRentRoomAdData2
+        {
+            get
+            {
+                yield return new UrbanRealEstateAdModel()
+                {
+                    Address = "проспект Просвещения, 14к4, Санкт-Петербург",
+                    CadastralNumber = "47:14:1203001:814",
+                    RoomsForRentCount = "1",
+                    RoomsType = "Изолированная",
+                    RoomArea = "20",
+                    TotalArea = "80",
+                    Floor = "3",
+                    FloorCount = "9",
+                    TotalRoomCountInFlat = "3",
+                    Kitchen = "10",
+                    LoggiasCount = "1",
+                    BalconiesCount = "Нет",
+                    SeparatedWsCount = "1",
+                    CombinedWsCount = "Нет",
+                    Repair = "Косметический",
+                    Pets = "Нет",
+                    Children = "Да",
+                    AdvancedOptions = new List<string>()
+                    {
+                    AdvancedOptions.Bath,
+                    AdvancedOptions.Phone,
+                    AdvancedOptions.Internet,
+                    AdvancedOptions.RoomsFurniture,
+                    AdvancedOptions.SeparateWs,
+                    AdvancedOptions.TV,
+                    AdvancedOptions.Fridge,
+                    AdvancedOptions.WindowsToStreet,
+                    AdvancedOptions.Loggia
+                    },
+                    Name = "Алые паруса",
+                    BuildYear = "2020",
+                    HouseType = "Кирпичный",
+                    HouseSeries = "i-80",
+                    CeilingHeight = "3",
+                    PassengerElevator = "1",
+                    CargoElevator = "нет",
+                    Ramp = "Нет",
+                    GarbageChute = "Есть",
+                    Parking = "Наземная",
+                    Description = "Сдается отличная комната",
+                    RentPrice = "20000",
+                    CurrencyType = "₽",
+                    BargainCheckbox = "Yes",
+                    CommunalPaymentAmount = "2000",
+                    CounterCheckbox = "Yes",
+                    BargainPrice = "18000",
+                    BargainConditions = "Порядочной семье торг",
+                    Prepayment = "20000",
+                    SelfEmployed = "Не указывать",
+                    OwnerDeposit = "20000",
+                    TenantsType = "семья"
+                };
+                //Email = "adam" + (long)(DateTime.Now - DateTime.MinValue).TotalMilliseconds + "@smith.me",
             }
         }
     }

@@ -34,26 +34,28 @@ namespace Cian.Tests.Tests
         }
 
         [Test]
+        [TestCaseSource(typeof(DataProviders), "OwnerRentRoomAdData")]
         [Description("Проверить, что объявление об аренде комнаты собственником создается")]
-        public void CheckRentAdOwnerRoomAd(
-            [ValueSource(typeof(DataProviders), "OwnerRentRoomAdData")] AboutLivingObject objectData,
-            [ValueSource(typeof(DataProviders), "AboutBuildingData")] AboutLivingBuilding buildingData)
+        public void CheckRentAdOwnerRoomAd(UrbanRealEstateAdModel data)
+            //[ValueSource(typeof(DataProviders), "OwnerRentRoomAdData")] UrbanRealEstateAdModel objectData,
+            //[ValueSource(typeof(DataProviders), "AboutBuildingData")] AboutLivingBuilding buildingData)
         {
             Thread.Sleep(2000);
             _header.ClickPostAdBtn();
             _rentRoomPage.RentAd(AccountType.Owner, RentType.Long, RealEstateType.Living, LivingObjectType.Room);
-            _rentRoomPage.EnterAddress(objectData.Address);
+            _rentRoomPage.EnterAddress(data.Address);
             Thread.Sleep(1000);
-            _rentRoomPage.SetAboutObjectBlock(objectData.CadastralNumber, objectData.RoomsForRentCount, objectData.RoomsType,
-                objectData.RoomArea, objectData.TotalArea, objectData.Floor, objectData.FloorCount, 
-                objectData.TotalRoomCountInFlat, objectData.Kitchen, objectData.LoggiasCount, objectData.BalconiesCount,
-                objectData.SeparatedWsCount, objectData.CombinedWsCount, objectData.Repair, objectData.Pets, 
-                objectData.Children, objectData.AdvancedOptions);
-            _rentRoomPage.SetAboutLivingBuildingForm(buildingData.Name, buildingData.BuildYear, buildingData.HouseType,
-                buildingData.HouseSeries, buildingData.CeilingHeight, buildingData.PassengerElevator,
-                buildingData.CargoElevator, buildingData.Ramp, buildingData.GarbageChute, buildingData.Parking);
-
-            _rentRoomPage.SetDescriptionBlock(description: objectData.Description);
+            _rentRoomPage.SetAboutObjectBlock(data.CadastralNumber, data.RoomsForRentCount, data.RoomsType,
+                data.RoomArea, data.TotalArea, data.Floor, data.FloorCount, data.TotalRoomCountInFlat, 
+                data.Kitchen, data.LoggiasCount, data.BalconiesCount, data.SeparatedWsCount,
+                data.CombinedWsCount, data.Repair, data.Pets, data.Children, data.AdvancedOptions);
+            _rentRoomPage.SetAboutLivingBuildingForm(data.Name, data.BuildYear, data.HouseType,
+                data.HouseSeries, data.CeilingHeight, data.PassengerElevator, data.CargoElevator, data.Ramp, 
+                data.GarbageChute, data.Parking);
+            _rentRoomPage.SetDescriptionBlock(description: data.Description);
+            _rentRoomPage.SetPriceAndDealConditions(data.RentPrice, data.CurrencyType, data.BargainCheckbox, data.CommunalPaymentAmount,
+                data.CounterCheckbox, data.BargainPrice, data.BargainConditions, data.Prepayment, data.SelfEmployed,
+                data.OwnerDeposit, data.TenantsType);
 
             Thread.Sleep(2000);
         }

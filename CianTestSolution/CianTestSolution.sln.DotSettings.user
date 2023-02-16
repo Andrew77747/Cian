@@ -1,5 +1,5 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=65c1856e_002D3e20_002D4560_002D9a5d_002D21f6f96aa0ec/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CheckLogin" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=65c1856e_002D3e20_002D4560_002D9a5d_002D21f6f96aa0ec/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CheckLogin" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::9226A511-775E-4FC3-832B-5D1706B5E2F5::net5.0::Cian.Tests.Tests.Authorization.CheckLogin&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;

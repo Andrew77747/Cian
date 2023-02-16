@@ -10,7 +10,7 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage.UrbanRealEstate
     {
         public RentRoomPage(WebDriverManager manager) : base(manager)
         {
-            
+
         }
 
         public void SetAboutObjectBlock(string cadastralNumber, string roomsForRent, string roomsType, string roomArea,
@@ -36,6 +36,42 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage.UrbanRealEstate
             SetPetsAllowed(petsAllowed);
             SetChildrenAllowed(childrenAllowed);
             SetAdvancedBlock(additionalCheckboxes);
+        }
+
+        public void SetPriceAndDealConditionsLivingUrbanRealEstate_Owner(string rentPrice, string currencyType, string bargainCheckbox,
+            string communalPaymentAmount, string counterCheckbox, string bargainPrice, string bargainConditions, string prepayment,
+            string selfEmployed, string ownerDeposit, string tenantsType)
+        {
+            SetPrice(rentPrice);
+            SetCurrencyType(currencyType);
+            SetBargainCheckbox(bargainCheckbox);
+            SetCommunalPaymentAmount(communalPaymentAmount);
+            SetCounterCheckbox(counterCheckbox);
+            SetBargainPrice(bargainPrice);
+            SetBargainConditions(bargainConditions);
+            SetPrepayment(prepayment);
+            SetSelfEmployed(selfEmployed);
+            SetOwnerDeposit(ownerDeposit);
+            SetTenantsType(tenantsType);
+        }
+
+        public void SetPriceAndDealConditionsLivingUrbanRealEstate_Agent(string rentPrice, string currencyType, string bargainCheckbox,
+            string communalPaymentAmount, string counterCheckbox, string bargainPrice, string bargainConditions, string prepayment,
+            string ownerDeposit, string tenantsType, string withoutClientPercentCheckbox, string withoutAnotherAgencyPercentCheckbox, 
+            string clientPercent = null, string anotherAgencyPercent = null)
+        {
+            SetPrice(rentPrice);
+            SetCurrencyType(currencyType);
+            SetBargainCheckbox(bargainCheckbox);
+            SetCommunalPaymentAmount(communalPaymentAmount);
+            SetCounterCheckbox(counterCheckbox);
+            SetBargainPrice(bargainPrice);
+            SetBargainConditions(bargainConditions);
+            SetPrepayment(prepayment);
+            SetOwnerDeposit(ownerDeposit);
+            SetTenantsType(tenantsType);
+            SetPercentFromClient(withoutClientPercentCheckbox, clientPercent);
+            SetPercentFromAnotherAgency(withoutAnotherAgencyPercentCheckbox, anotherAgencyPercent);
         }
 
         public List<string> GetAdvancedOptions()

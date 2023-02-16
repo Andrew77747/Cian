@@ -7,10 +7,12 @@ namespace Cian.Framework.PageObjects.Elements
     public class LoginModal : BaseElement
     {
         private Appsettings _settings;
+        private Header _header;
 
         public LoginModal(WebDriverManager manager, Appsettings settings) : base(manager)
         {
             _settings = settings;
+            _header = new Header(manager);
         }
 
         #region Map of Elements
@@ -29,6 +31,7 @@ namespace Cian.Framework.PageObjects.Elements
 
         public void Login()
         {
+            _header.ClickLoginBtn();
             Wrapper.ClickElement(_enterAnotherWayBtn);
             Wrapper.TypeAndSend(_userNameInput, _settings.Login);
             Wrapper.ClickElement(_continueBtn);

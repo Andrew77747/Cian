@@ -32,15 +32,15 @@ namespace Cian.Tests
                     Children = "Да",
                     AdvancedOptions = new List<string>()
                     {
-                    AdvancedOptions.Bath,
-                    AdvancedOptions.Phone,
-                    AdvancedOptions.Internet,
-                    AdvancedOptions.RoomsFurniture,
-                    AdvancedOptions.SeparateWs,
-                    AdvancedOptions.TV,
-                    AdvancedOptions.Fridge,
-                    AdvancedOptions.WindowsToStreet,
-                    AdvancedOptions.Loggia
+                        AdvancedOptions.Bath,
+                        AdvancedOptions.Phone,
+                        AdvancedOptions.Internet,
+                        AdvancedOptions.RoomsFurniture,
+                        AdvancedOptions.SeparateWs,
+                        AdvancedOptions.TV,
+                        AdvancedOptions.Fridge,
+                        AdvancedOptions.WindowsToStreet,
+                        AdvancedOptions.Loggia
                     },
                     Name = "Алые паруса",
                     BuildYear = "2020",

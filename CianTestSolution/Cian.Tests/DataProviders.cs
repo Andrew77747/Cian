@@ -30,7 +30,7 @@ namespace Cian.Tests
                     Repair = "Косметический",
                     Pets = "Нет",
                     Children = "Да",
-                    AdvancedOptions = new List<string>()
+                    AdvancedOptions = new List<string>
                     {
                         AdvancedOptions.Bath,
                         AdvancedOptions.Phone,
@@ -66,6 +66,30 @@ namespace Cian.Tests
                     TenantsType = "семья"
                 };
                 //Email = "adam" + (long)(DateTime.Now - DateTime.MinValue).TotalMilliseconds + "@smith.me",
+            }
+        }
+
+        public static IEnumerable BuyApartmentSearchData
+        {
+            get
+            {
+                yield return new SearchModel()
+                {
+                    OfferTypeCheckboxes = new List<string>
+                    {
+                        "Квартира в новостройке",
+                        "Квартира во вторичке"
+                    },
+                    RoomsCount = "2",
+                    ApartmentTypeCheckboxes = new List<string>
+                    {
+                        "Студия",
+                        "Свободная планировка"
+                    },
+                    PriceFrom = "3000000",
+                    PriceTill = "10000000",
+                    Address = "метро Лесная, Санкт-Петербург"
+                };
             }
         }
     }

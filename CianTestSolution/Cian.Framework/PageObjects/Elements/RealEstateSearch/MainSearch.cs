@@ -1,4 +1,7 @@
-﻿using Cian.Framework.Tools;
+﻿using System.Collections.Generic;
+using System.Threading;
+using Cian.Framework.Data.RealEstateMainSearch;
+using Cian.Framework.Tools;
 using OpenQA.Selenium;
 
 namespace Cian.Framework.PageObjects.Elements.RealEstateSearch
@@ -18,6 +21,9 @@ namespace Cian.Framework.PageObjects.Elements.RealEstateSearch
         private readonly By _priceFrom = By.CssSelector("[placeholder='от']");
         private readonly By _priceTill = By.CssSelector("[placeholder='до']");
         private readonly By _addressInput = By.CssSelector("#geo-suggest-input");
+        private readonly By _searchBtn = By.CssSelector("[data-mark='FiltersSearchButton']");
+        private readonly By _addressString = By.XPath("//*[@data-group='addresses']//*[@class='_025a50318d--trunc_1--W9PIS']");
+        private readonly By _addressDropdown = By.XPath("//*[@data-group='addresses']");
 
         #endregion
 
@@ -29,11 +35,11 @@ namespace Cian.Framework.PageObjects.Elements.RealEstateSearch
             Wrapper.ClickElement(_price);
         }
 
-        public void SetRoomsCount(string roomsCount, string[] apartmentTypeCheckboxes)
+        public void SetRoomsCount(string roomsCount, List<string> apartmentTypeCheckboxes)
         {
             Wrapper.ClickElement(_roomsCount);
 
-            Wrapper.ClickElement(By.XPath($"//*[@class='_025a50318d--button--i1_mM' and text()='{roomsCount}']"));
+            Wrapper.ClickElement(By.XPath($"//*[contains(@class, '_025a50318d--button--i1_mM') and text()='{roomsCount}']"));
 
             foreach (var checkbox in apartmentTypeCheckboxes)
             {
@@ -49,7 +55,7 @@ namespace Cian.Framework.PageObjects.Elements.RealEstateSearch
             Wrapper.ClickElement(_roomsCount);
         }
 
-        public void SetOfferTypeSearch(string type, string[] offerTypeCheckboxes)
+        public void SetOfferTypeSearch(string type, List<string> offerTypeCheckboxes)
         {
             Wrapper.ClickElement(_offerType);
 
@@ -77,6 +83,67 @@ namespace Cian.Framework.PageObjects.Elements.RealEstateSearch
         public void SetAddress(string address)
         {
             Wrapper.TypeAndSend(_addressInput, address);
+            Wrapper.WaitElementDisplayed(_addressDropdown);
+            Wrapper.PutEnter(_addressInput);
+        }
+
+        public void ClickSearchBtn()
+        {
+            Wrapper.ClickElement(_searchBtn);
+        }
+
+        //Основные метода поиска
+        public void BuyOrRentApartmentSearch(string tabMenuName, List<string> offerTypeCheckboxes, string roomsCount, 
+            List<string> apartmentTypeCheckboxes, string priceFrom, string priceTill, string address)
+        {
+            ClickTabMenu(tabMenuName);
+            SetOfferTypeSearch("Жилая", offerTypeCheckboxes);
+            SetRoomsCount(roomsCount, apartmentTypeCheckboxes);//Можно выбрать сразу несколько вариантов комнат - исправить
+            SetPrice(priceFrom, priceTill);
+            SetAddress(address);
+            ClickSearchBtn();
+        }
+
+        public void BuyOrRentRoomOrHouseSearch(string[] offerTypeCheckboxes, string roomsCount, string[] apartmentTypeCheckboxes,
+            string priceFrom, string priceTill, string address)
+        {
+
+        }
+
+        public void BuyOrRentCommercialSearch(string[] offerTypeCheckboxes, string roomsCount, string[] apartmentTypeCheckboxes,
+            string priceFrom, string priceTill, string address)
+        {
+
+        }
+
+        public void DailyRentSearch(string[] offerTypeCheckboxes, string roomsCount, string[] apartmentTypeCheckboxes,
+            string priceFrom, string priceTill, string address)
+        {
+
+        }
+
+        public void EstimationSearch(string[] offerTypeCheckboxes, string roomsCount, string[] apartmentTypeCheckboxes,
+            string priceFrom, string priceTill, string address)
+        {
+
+        }
+
+        public void MortgageSearch(string[] offerTypeCheckboxes, string roomsCount, string[] apartmentTypeCheckboxes,
+            string priceFrom, string priceTill, string address)
+        {
+
+        }
+
+        public void RealtorSearch(string[] offerTypeCheckboxes, string roomsCount, string[] apartmentTypeCheckboxes,
+            string priceFrom, string priceTill, string address)
+        {
+
+        }
+
+        public void NewBuildingSearch(string[] offerTypeCheckboxes, string roomsCount, string[] apartmentTypeCheckboxes,
+            string priceFrom, string priceTill, string address)
+        {
+
         }
     }
 }

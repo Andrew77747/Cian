@@ -80,7 +80,13 @@ namespace Cian.Tests
                         "Квартира в новостройке",
                         "Квартира во вторичке"
                     },
-                    RoomsCount = "2",
+                    RoomsCount = new List<string>
+                    {
+                        "1",
+                        "2",
+                        "3",
+                        "4"
+                    },
                     ApartmentTypeCheckboxes = new List<string>
                     {
                         "Студия",

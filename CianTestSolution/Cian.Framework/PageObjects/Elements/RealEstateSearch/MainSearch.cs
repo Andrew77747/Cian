@@ -35,11 +35,17 @@ namespace Cian.Framework.PageObjects.Elements.RealEstateSearch
             Wrapper.ClickElement(_price);
         }
 
-        public void SetRoomsCount(string roomsCount, List<string> apartmentTypeCheckboxes)
+        public void SetRoomsCount(List<string> roomsCounts, List<string> apartmentTypeCheckboxes)
         {
             Wrapper.ClickElement(_roomsCount);
 
-            Wrapper.ClickElement(By.XPath($"//*[contains(@class, '_025a50318d--button--i1_mM') and text()='{roomsCount}']"));
+            foreach (var count in roomsCounts)
+            {
+                var countElement = Wrapper.FindElement(
+                    By.XPath($"//*[contains(@class, '_025a50318d--button--i1_mM') and text()='{count}']"));
+                if(Wrapper.IsAttributeNotContainsValue(countElement, "class", "active"))
+                    countElement.Click();
+            }
 
             foreach (var checkbox in apartmentTypeCheckboxes)
             {
@@ -93,12 +99,12 @@ namespace Cian.Framework.PageObjects.Elements.RealEstateSearch
         }
 
         //Основные метода поиска
-        public void BuyOrRentApartmentSearch(string tabMenuName, List<string> offerTypeCheckboxes, string roomsCount, 
+        public void BuyOrRentApartmentSearch(string tabMenuName, List<string> offerTypeCheckboxes, List<string> roomsCount, 
             List<string> apartmentTypeCheckboxes, string priceFrom, string priceTill, string address)
         {
             ClickTabMenu(tabMenuName);
             SetOfferTypeSearch("Жилая", offerTypeCheckboxes);
-            SetRoomsCount(roomsCount, apartmentTypeCheckboxes);//Можно выбрать сразу несколько вариантов комнат - исправить
+            SetRoomsCount(roomsCount, apartmentTypeCheckboxes);
             SetPrice(priceFrom, priceTill);
             SetAddress(address);
             ClickSearchBtn();

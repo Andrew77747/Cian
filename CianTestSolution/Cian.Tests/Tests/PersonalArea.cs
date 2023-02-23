@@ -32,7 +32,7 @@ namespace Cian.Tests.Tests
 
         [Test, Description("Проверить, что параметры поиска сохраняются в личном кабинете")]
         [TestCaseSource(typeof(DataProviders), "BuyApartmentSearchData")]
-        public void CheckSortingPriceAsc(SearchModel data)
+        public void CheckSavingSearchParameters(SearchModel data)
         {
             _mainSearch.BuyOrRentApartmentSearch(TabMenuNames.Buy, data.OfferTypeCheckboxes, data.RoomsCount,
                 data.ApartmentTypeCheckboxes, data.PriceFrom, data.PriceTill, data.Address);

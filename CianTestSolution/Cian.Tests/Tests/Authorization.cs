@@ -22,7 +22,6 @@ namespace Cian.Tests.Tests
         [Description("Проверить, что вход в систему успешно выполняется")]
         public void CheckLogin()
         {
-            _header.ClickLoginBtn();
             _loginModal.Login();
             Assert.That(_header.GetUserId().Equals(Settings.UserID));
         }

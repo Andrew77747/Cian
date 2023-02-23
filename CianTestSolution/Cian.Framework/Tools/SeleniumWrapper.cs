@@ -1117,6 +1117,41 @@ namespace Cian.Framework.Tools
             }
         }
 
+        //Перевести стринговый список в int и проверить сортировку Asc
+        public bool IsSortingPriceAskRightStringToIntList(List<string> actualList)
+        {
+            //Если нужно удалить лишние символы, которые будут мешать конвертировать string в int
+            //for (int i = 0; i < actualArray.Length; i++)
+            //{
+            //    actualArray[i] = actualArray[i].Replace(" ", string.Empty);
+            //    actualArray[i] = actualArray[i].Replace("₽", string.Empty);
+            //}
+
+            var expectedList = new List<int>();
+
+            var intActualList = new List<int>();
+
+            foreach (var elem in actualList)
+            {
+                intActualList.Add(int.Parse(elem));
+            }
+
+            expectedList = intActualList.ToList();
+
+            expectedList.Sort();
+
+            if (intActualList.SequenceEqual(expectedList))
+            {
+                Console.WriteLine(expectedList);
+                return true;
+            }
+            else
+            {
+                Console.WriteLine(expectedList);
+                return false;
+            }
+        }
+
         #endregion
 
         #region Waiters

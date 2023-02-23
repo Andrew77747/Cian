@@ -4,7 +4,7 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage.SuburbanRealEstate
 {
     public class HousePage : AdPage
     {
-        public HousePage(WebDriverManager manager) : base(manager)
+        public HousePage(IWebDriverManager manager) : base(manager)
         {
             
         }

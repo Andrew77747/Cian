@@ -7,7 +7,7 @@ namespace Cian.Framework.PageObjects.Pages
     {
         private string _contactModalHeaderText = "Напишите нам";
 
-        public ContactPage(WebDriverManager manager) : base(manager)
+        public ContactPage(IWebDriverManager manager) : base(manager)
         {
             
         }

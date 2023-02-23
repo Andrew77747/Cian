@@ -5,7 +5,7 @@ namespace Cian.Framework.PageObjects.Pages.AdsPage
 {
     public class AdPage : BasePage
     {
-        public AdPage(WebDriverManager manager) : base(manager)
+        public AdPage(IWebDriverManager manager) : base(manager)
         {
             
         }

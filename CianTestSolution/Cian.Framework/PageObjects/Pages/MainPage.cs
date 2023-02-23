@@ -8,7 +8,7 @@ namespace Cian.Framework.PageObjects.Pages
     {
         private Appsettings _settings;
 
-        public MainPage(WebDriverManager manager, Appsettings settings) : base(manager)
+        public MainPage(IWebDriverManager manager, Appsettings settings) : base(manager)
         {
             _settings = settings;
         }

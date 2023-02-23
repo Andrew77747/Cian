@@ -36,8 +36,14 @@ namespace Cian.Framework.PageObjects.Elements
         private readonly By _menuItem = By.CssSelector("[data-name='NavBar'] li");
         private readonly By _subMenuItem = By.CssSelector("[data-name='DropdownMainMenu'] ul li");
         private readonly By _postAdBtn = By.CssSelector("._25d45facb5--place--MmHod ._25d45facb5--button--Cp1dl");
+        private readonly By _personalAreaLink = By.LinkText("Личный кабинет");
 
         #endregion
+
+        public void ClickPersonalAreaLink()
+        {
+            Wrapper.ClickElement(_personalAreaLink);
+        }
 
         public void ClickPostAdBtn()
         {

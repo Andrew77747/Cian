@@ -1,4 +1,6 @@
-﻿using Cian.Framework.Data.Models;
+﻿using System.Threading;
+using Cian.Framework.Data;
+using Cian.Framework.Data.Models;
 using Cian.Framework.Data.RealEstateMainSearch;
 using Cian.Framework.PageObjects.Elements.RealEstateSearch;
 using Cian.Framework.PageObjects.Pages;
@@ -23,7 +25,8 @@ namespace Cian.Tests.Tests
         {
             _mainSearch.BuyOrRentApartmentSearch(TabMenuNames.Buy, data.OfferTypeCheckboxes, data.RoomsCount,
                 data.ApartmentTypeCheckboxes, data.PriceFrom, data.PriceTill, data.Address);
-            var x =_resultPage.GetAllPrices();
+            _resultPage.SelectSortingType(SortingName.PriceCheaperFirst);
+            Assert.IsTrue(_resultPage.IsSortingAskCorrect(_resultPage.GetAllPrices()), "Sorting ask is not correct");
         }
     }
 }

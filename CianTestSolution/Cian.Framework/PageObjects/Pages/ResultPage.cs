@@ -23,31 +23,45 @@ namespace Cian.Framework.PageObjects.Pages
         private readonly By _searchNameInput = By.CssSelector("[name='title']");
         private readonly By _searchEmailInput = By.CssSelector("[name='email']");
         private readonly By _notificationDropdown = By.CssSelector("[aria-haspopup='listbox']");
+        private readonly By _successSavingCloseModalBtn = By.CssSelector("[aria-label='Закрыть']");
 
         #endregion
 
-        public void SaveSearchResult(string searchName, string notification, string email)
+        public void ClickSearchSaveBtn()
         {
-            Wrapper.ClearTypeAndSend(_searchNameInput, searchName);
-
-            Wrapper.ClickElement(_notificationDropdown);
-            Wrapper.ClickElement(By.XPath($"//*[@role='listbox']//*[text()='{notification}']"));
-
-            Wrapper.ClearTypeAndSend(_searchEmailInput, email);
-
-            //todo доделать чекбоксы
-
             Wrapper.ClickElement(_searchSaveBtn);
+        }
+
+        public void SaveSearchResult(string searchName = null, string notification = null, string email = null,
+            string[] checkboxes = null)
+        {
+            if (searchName is not null)
+                Wrapper.ClearTypeAndSend(_searchNameInput, searchName);
+
+            if (notification is not null)
+            {
+                Wrapper.ClickElement(_notificationDropdown);
+                Wrapper.ClickElement(By.XPath($"//*[@role='listbox']//*[text()='{notification}']"));
+            }
+
+            if (email is not null)
+                Wrapper.ClearTypeAndSend(_searchEmailInput, email);
+
+            if (checkboxes is not null)
+            {
+                foreach (var checkbox in checkboxes)
+                {
+                    Wrapper.ClickElement(By.XPath($"//*[@name='{checkbox}']/.."));
+                }
+            }
+
+            Wrapper.ClickElement(_modalSearchSaveBtn);
+            Wrapper.ClickElement(_successSavingCloseModalBtn);
         }
 
         public string GetSearchResultHeader()
         {
             return Wrapper.FindElement(_searchResultHeader).Text;
-        }
-
-        public void ClickModalSearchSaveBtn()
-        {
-            Wrapper.ClickElement(_modalSearchSaveBtn);
         }
 
         public List<string> GetAllPrices()

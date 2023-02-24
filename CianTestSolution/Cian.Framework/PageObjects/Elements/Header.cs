@@ -19,6 +19,16 @@ namespace Cian.Framework.PageObjects.Elements
         Services
     }
 
+    public enum UserMenuItem
+    {
+        PersonalArea,
+        PromoCode,
+        AddAd,
+        Mortgage,
+        Help,
+        Exit
+    }
+
     public class Header : BaseElement
 
     {
@@ -36,9 +46,40 @@ namespace Cian.Framework.PageObjects.Elements
         private readonly By _menuItem = By.CssSelector("[data-name='NavBar'] li");
         private readonly By _subMenuItem = By.CssSelector("[data-name='DropdownMainMenu'] ul li");
         private readonly By _postAdBtn = By.CssSelector("._25d45facb5--place--MmHod ._25d45facb5--button--Cp1dl");
+        private readonly By _userMenuItem = By.CssSelector("._25d45facb5--menu-list--MPsCw li");
+        private readonly By _userMenuDropdown = By.CssSelector("._25d45facb5--container--X_76T");
         private readonly By _personalAreaLink = By.LinkText("Личный кабинет");
 
         #endregion
+
+        public void ClickUserMenuItem(UserMenuItem item)
+        {
+            Wrapper.WaitElementDisplayed(_userMenuDropdown);
+
+            var userMenuItemsList = Wrapper.FindElements(_userMenuItem);
+
+            switch (item)
+            {
+                case UserMenuItem.PersonalArea:
+                    userMenuItemsList[0].Click();
+                    break;
+                case UserMenuItem.PromoCode:
+                    userMenuItemsList[1].Click();
+                    break;
+                case UserMenuItem.AddAd:
+                    userMenuItemsList[2].Click();
+                    break;
+                case UserMenuItem.Mortgage:
+                    userMenuItemsList[3].Click();
+                    break;
+                case UserMenuItem.Help:
+                    userMenuItemsList[4].Click();
+                    break;
+                case UserMenuItem.Exit:
+                    userMenuItemsList[4].Click();
+                    break;
+            }
+        }
 
         public void ClickPersonalAreaLink()
         {
@@ -57,8 +98,13 @@ namespace Cian.Framework.PageObjects.Elements
 
         public string GetUserId()
         {
-            Wrapper.ClickElement(_userAvatar);
+            ClickUserAvatar();
             return Wrapper.FindElement(_userId).Text;
+        }
+
+        public void ClickUserAvatar()
+        {
+            Wrapper.ClickElement(_userAvatar);
         }
 
         public void ClickTopMenuItem(TopMenu item)
